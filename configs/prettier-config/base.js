@@ -9,7 +9,7 @@ module.exports = {
   trailingComma: 'all',
   printWidth: 80,
   endOfLine: 'lf',
-  plugins: ['@trivago/prettier-plugin-sort-imports'],
+  plugins: [require.resolve('@trivago/prettier-plugin-sort-imports')],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
 };

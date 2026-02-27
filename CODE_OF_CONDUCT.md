@@ -28,7 +28,7 @@ consider inappropriate.
 ## Reporting
 
 To report conduct issues, please contact the maintainers at
-`quangpham.software.engineer@gmail.com`.
+`quangpham.developer@gmail.com`.
 
 ## Attribution
 

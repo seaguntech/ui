@@ -1,17 +1,17 @@
 {
-  "name": "seaguntech-monorepo-template",
-  "description": "Seaguntech monorepo with Turborepo, pnpm, and Tailwind v4",
+  "name": "seaguntech-ui",
+  "description": "Seagun Tech UI monorepo with Turborepo, pnpm, and Tailwind v4",
   "private": true,
   "version": "0.1.0",
-  "author": "Quang Pham <quangpham.software.engineer@gmail.com>",
+  "author": "Quang Pham <quangpham.developer@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/seaguntech/seaguntech-monorepo-template.git"
+    "url": "https://github.com/seaguntech/ui.git"
   },
-  "homepage": "https://github.com/seaguntech/seaguntech-monorepo-template",
+  "homepage": "https://github.com/seaguntech/ui",
   "bugs": {
-    "url": "https://github.com/seaguntech/seaguntech-monorepo-template/issues"
+    "url": "https://github.com/seaguntech/ui/issues"
   },
   "packageManager": "pnpm@10.25.0",
   "engines": {

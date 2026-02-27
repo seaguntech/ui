@@ -1,6 +1,6 @@
 # @seaguntech/design-system
 
-Shared Tailwind CSS v4 design system for the Seaguntech monorepo. This package
+Shared Tailwind CSS v4 design system for the Seagun Tech UI monorepo. This package
 ships tokens, themes, base styles, and custom utilities as CSS, plus a PostCSS
 config that enables `@tailwindcss/postcss`.
 

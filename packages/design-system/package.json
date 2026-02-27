@@ -2,7 +2,7 @@
   "name": "@seaguntech/design-system",
   "private": true,
   "type": "module",
-  "description": "Tailwind CSS v4 design system for the Seaguntech monorepo",
+  "description": "Tailwind CSS v4 design system for the Seagun Tech UI monorepo",
   "exports": {
     ".": "./globals.css",
     "./design-tokens": "./design-tokens.css",

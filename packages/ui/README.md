@@ -1,6 +1,6 @@
 # @seaguntech/ui
 
-Shared UI component library for the Seaguntech monorepo.
+Shared UI component library for the Seagun Tech UI monorepo.
 
 ## Install
 
