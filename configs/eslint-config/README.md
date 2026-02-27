@@ -407,5 +407,5 @@ To modify ESLint configuration:
 ---
 
 <div align="center">
-Part of the Seaguntech monorepo
+Part of the Seagun Tech UI monorepo
 </div>

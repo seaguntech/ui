@@ -2,14 +2,14 @@
   "name": "@seaguntech/utils",
   "version": "0.1.0",
   "license": "MIT",
-  "description": "Shared utility functions for the Seaguntech monorepo",
+  "description": "Shared utility functions for the Seagun Tech UI monorepo",
   "repository": {
     "type": "git",
-    "url": "https://github.com/seaguntech/seaguntech-monorepo-template.git"
+    "url": "https://github.com/seaguntech/ui.git"
   },
-  "homepage": "https://github.com/seaguntech/seaguntech-monorepo-template",
+  "homepage": "https://github.com/seaguntech/ui",
   "bugs": {
-    "url": "https://github.com/seaguntech/seaguntech-monorepo-template/issues"
+    "url": "https://github.com/seaguntech/ui/issues"
   },
   "keywords": [
     "utils",

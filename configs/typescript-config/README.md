@@ -272,5 +272,5 @@ To modify TypeScript configurations:
 ---
 
 <div align="center">
-Part of the Seaguntech monorepo
+Part of the Seagun Tech UI monorepo
 </div>

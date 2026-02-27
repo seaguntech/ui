@@ -1,0 +1,11 @@
+{
+  "initializedAt": "2026-02-27T08:19:17.801Z",
+  "projectName": "seaguntech-ui",
+  "scope": "seaguntech",
+  "github": {
+    "owner": "seaguntech",
+    "repo": "ui"
+  },
+  "maintainerEmail": "quangpham.developer@gmail.com",
+  "displayName": "Seagun Tech UI"
+}

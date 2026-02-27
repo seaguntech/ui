@@ -1,6 +1,6 @@
 # @seaguntech/utils
 
-Shared utility functions for the Seaguntech monorepo.
+Shared utility functions for the Seagun Tech UI monorepo.
 
 ## Install
 

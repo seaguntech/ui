@@ -1,6 +1,6 @@
 # @seaguntech/logger
 
-Pino-based logger helpers for the Seaguntech monorepo.
+Pino-based logger helpers for the Seagun Tech UI monorepo.
 
 ## Install
 

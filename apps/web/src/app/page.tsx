@@ -10,9 +10,7 @@ export default function Home() {
           <p className="text-sm text-muted-foreground">
             Today is {formatDate(new Date())}
           </p>
-          <h1 className="text-3xl font-semibold">
-            Seaguntech Monorepo Starter
-          </h1>
+          <h1 className="text-3xl font-semibold">Seagun Tech UI Starter</h1>
         </div>
         <p className="text-base text-muted-foreground">
           A reusable template with shared UI, logging, and tooling.

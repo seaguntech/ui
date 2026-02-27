@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for contributing! This repository is the Seaguntech monorepo template.
+Thanks for contributing! This repository is the Seagun Tech UI monorepo template.
 
 ## Development Setup
 

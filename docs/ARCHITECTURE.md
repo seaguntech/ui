@@ -2,7 +2,7 @@
 
 ## Overview
 
-This Seaguntech monorepo template provides:
+This Seagun Tech UI monorepo template provides:
 
 - A Next.js web app (App Router)
 - A Storybook app for UI development
