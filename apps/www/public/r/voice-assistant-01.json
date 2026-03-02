@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "voice-assistant-01",
+  "type": "registry:block",
+  "description": "Voice assistant shell with waveform and conversation panel",
+  "dependencies": [],
+  "registryDependencies": [
+    "voice-button",
+    "waveform",
+    "conversation",
+    "card",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "blocks/voice-assistant-01/page.tsx",
+      "type": "registry:page",
+      "target": "app/voice-assistant/page.tsx",
+      "content": "import { AssistantPanel } from './components/assistant-panel';\nimport * as React from 'react';\n\nexport default function VoiceAssistantBlockPage() {\n  return (\n    <main className=\"bg-background flex min-h-svh items-center justify-center p-4\">\n      <AssistantPanel />\n    </main>\n  );\n}\n"
+    },
+    {
+      "path": "blocks/voice-assistant-01/components/assistant-panel.tsx",
+      "type": "registry:component",
+      "target": "components/assistant-panel.tsx",
+      "content": "import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Conversation, Message } from '@/components/ui/conversation';\nimport { VoiceButton } from '@/components/ui/voice-button';\nimport { Waveform } from '@/components/ui/waveform';\nimport * as React from 'react';\n\nexport function AssistantPanel() {\n  const [isListening, setIsListening] = React.useState(false);\n\n  return (\n    <Card className=\"w-full max-w-xl\">\n      <CardHeader>\n        <CardTitle>Voice Assistant</CardTitle>\n      </CardHeader>\n      <CardContent className=\"space-y-4\">\n        <Waveform active={isListening} />\n        <Conversation>\n          <Message from=\"assistant\">\n            Hi! Ask me anything about your workspace.\n          </Message>\n          <Message from=\"user\">Summarize yesterday&apos;s standup.</Message>\n        </Conversation>\n        <VoiceButton\n          isListening={isListening}\n          onToggle={() => setIsListening((state) => !state)}\n        />\n      </CardContent>\n    </Card>\n  );\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input",
+  "type": "registry:ui",
+  "description": "Text input with error state support",
+  "dependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "ui/input.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/input.tsx",
+      "content": "import { cn } from '@/lib/utils';\nimport * as React from 'react';\n\nexport interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {\n  error?: string;\n}\n\nexport function Input({ className, error, id, ...props }: InputProps) {\n  const errorId = id ? `${id}-error` : undefined;\n\n  return (\n    <div className=\"grid gap-1.5\">\n      <input\n        id={id}\n        className={cn(\n          'flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',\n          error && 'border-destructive focus-visible:ring-destructive',\n          className,\n        )}\n        aria-invalid={error ? true : undefined}\n        aria-describedby={error ? errorId : undefined}\n        {...props}\n      />\n      {error ? (\n        <p id={errorId} className=\"text-sm text-destructive\" role=\"alert\">\n          {error}\n        </p>\n      ) : null}\n    </div>\n  );\n}\n"
+    }
+  ]
+}

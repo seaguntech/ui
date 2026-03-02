@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "conversation",
+  "type": "registry:ui",
+  "description": "Conversation and message primitives",
+  "dependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "ui/conversation.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/conversation.tsx",
+      "content": "import { cn } from '@/lib/utils';\nimport * as React from 'react';\n\nexport function Conversation({\n  className,\n  ...props\n}: React.ComponentProps<'div'>) {\n  return <div className={cn('flex flex-col gap-3', className)} {...props} />;\n}\n\nexport interface MessageProps extends React.ComponentProps<'div'> {\n  from?: 'user' | 'assistant';\n}\n\nexport function Message({\n  from = 'assistant',\n  className,\n  ...props\n}: MessageProps) {\n  return (\n    <div\n      className={cn(\n        'max-w-[80%] rounded-xl px-3 py-2 text-sm',\n        from === 'user'\n          ? 'bg-primary text-primary-foreground ml-auto'\n          : 'bg-muted text-foreground',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ]
+}

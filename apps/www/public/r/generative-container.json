@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "generative-container",
+  "type": "registry:ui",
+  "description": "Container with an animated border glow to indicate AI generation",
+  "dependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "ui/generative-container.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/generative-container.tsx",
+      "content": "'use client';\n\nimport { cn } from '@/lib/utils';\nimport React from 'react';\n\ninterface GenerativeContainerProps extends React.HTMLAttributes<HTMLDivElement> {\n  active?: boolean;\n}\n\nexport function GenerativeContainer({\n  children,\n  className,\n  active = true,\n  ...props\n}: GenerativeContainerProps) {\n  return (\n    <div\n      className={cn('relative rounded-xl p-[1px] overflow-hidden', className)}\n      {...props}\n    >\n      {active && (\n        <div className=\"absolute inset-0 z-0 bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0%,transparent_75%,hsl(var(--primary))_100%)] animate-[spin_3s_linear_infinite]\" />\n      )}\n      <div className=\"relative z-10 rounded-[10px] bg-background h-full w-full\">\n        {children}\n      </div>\n    </div>\n  );\n}\n"
+    }
+  ]
+}

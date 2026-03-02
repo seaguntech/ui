@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "workspace-quick-actions-01",
+  "type": "registry:block",
+  "description": "Workspace quick action board with tabs, dialogs, and menus",
+  "dependencies": [],
+  "registryDependencies": [
+    "tabs",
+    "dialog",
+    "dropdown-menu",
+    "card",
+    "badge",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "blocks/workspace-quick-actions-01/page.tsx",
+      "type": "registry:page",
+      "target": "app/workspace/page.tsx",
+      "content": "import { Badge } from '@/components/ui/badge';\nimport { Button } from '@/components/ui/button';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport {\n  Dialog,\n  DialogContent,\n  DialogDescription,\n  DialogFooter,\n  DialogHeader,\n  DialogTitle,\n  DialogTrigger,\n} from '@/components/ui/dialog';\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuItem,\n  DropdownMenuLabel,\n  DropdownMenuSeparator,\n  DropdownMenuTrigger,\n} from '@/components/ui/dropdown-menu';\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';\nimport * as React from 'react';\n\nexport default function WorkspaceQuickActionsBlockPage() {\n  return (\n    <main className=\"bg-background flex min-h-svh items-center justify-center p-4\">\n      <Card className=\"w-full max-w-2xl\">\n        <CardHeader className=\"flex-row items-center justify-between space-y-0\">\n          <CardTitle>Workspace Quick Actions</CardTitle>\n          <Badge>Beta</Badge>\n        </CardHeader>\n        <CardContent className=\"space-y-4\">\n          <Tabs defaultValue=\"tasks\">\n            <TabsList>\n              <TabsTrigger value=\"tasks\">Tasks</TabsTrigger>\n              <TabsTrigger value=\"team\">Team</TabsTrigger>\n            </TabsList>\n            <TabsContent value=\"tasks\" className=\"pt-3 text-sm\">\n              Prioritize onboarding checklist and release notes.\n            </TabsContent>\n            <TabsContent value=\"team\" className=\"pt-3 text-sm\">\n              Review teammate updates and assign next actions.\n            </TabsContent>\n          </Tabs>\n          <div className=\"flex gap-2\">\n            <Dialog>\n              <DialogTrigger asChild>\n                <Button>Create task</Button>\n              </DialogTrigger>\n              <DialogContent>\n                <DialogHeader>\n                  <DialogTitle>Create a new task</DialogTitle>\n                  <DialogDescription>\n                    Quickly create a task in your current board.\n                  </DialogDescription>\n                </DialogHeader>\n                <DialogFooter>\n                  <Button variant=\"secondary\">Cancel</Button>\n                  <Button>Save</Button>\n                </DialogFooter>\n              </DialogContent>\n            </Dialog>\n            <DropdownMenu>\n              <DropdownMenuTrigger asChild>\n                <Button variant=\"outline\">More actions</Button>\n              </DropdownMenuTrigger>\n              <DropdownMenuContent>\n                <DropdownMenuLabel>Workspace</DropdownMenuLabel>\n                <DropdownMenuSeparator />\n                <DropdownMenuItem>Invite members</DropdownMenuItem>\n                <DropdownMenuItem>Export board</DropdownMenuItem>\n              </DropdownMenuContent>\n            </DropdownMenu>\n          </div>\n        </CardContent>\n      </Card>\n    </main>\n  );\n}\n"
+    }
+  ]
+}

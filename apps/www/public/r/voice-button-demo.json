@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "voice-button-demo",
+  "type": "registry:example",
+  "description": "Voice button with local listening state",
+  "dependencies": [],
+  "registryDependencies": ["voice-button"],
+  "files": [
+    {
+      "path": "examples/voice-button-demo.tsx",
+      "type": "registry:example",
+      "content": "import { VoiceButton } from '@/components/ui/voice-button';\nimport * as React from 'react';\n\nexport function VoiceButtonDemo() {\n  const [isListening, setIsListening] = React.useState(false);\n\n  return (\n    <VoiceButton\n      isListening={isListening}\n      onToggle={() => setIsListening((state) => !state)}\n    />\n  );\n}\n"
+    }
+  ]
+}

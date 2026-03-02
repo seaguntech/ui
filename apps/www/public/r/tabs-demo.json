@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs-demo",
+  "type": "registry:example",
+  "description": "Tabs layout for segmented content",
+  "dependencies": [],
+  "registryDependencies": ["tabs", "card"],
+  "files": [
+    {
+      "path": "examples/tabs-demo.tsx",
+      "type": "registry:example",
+      "content": "import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';\nimport * as React from 'react';\n\nexport function TabsDemo() {\n  return (\n    <Card className=\"max-w-lg\">\n      <CardHeader>\n        <CardTitle>Workspace</CardTitle>\n      </CardHeader>\n      <CardContent>\n        <Tabs defaultValue=\"overview\">\n          <TabsList>\n            <TabsTrigger value=\"overview\">Overview</TabsTrigger>\n            <TabsTrigger value=\"activity\">Activity</TabsTrigger>\n          </TabsList>\n          <TabsContent value=\"overview\" className=\"pt-3 text-sm\">\n            Team productivity is up this week.\n          </TabsContent>\n          <TabsContent value=\"activity\" className=\"pt-3 text-sm\">\n            12 actions completed in the last 24h.\n          </TabsContent>\n        </Tabs>\n      </CardContent>\n    </Card>\n  );\n}\n"
+    }
+  ]
+}

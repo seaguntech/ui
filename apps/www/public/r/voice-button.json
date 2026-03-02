@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "voice-button",
+  "type": "registry:ui",
+  "description": "Voice interaction trigger button",
+  "dependencies": ["lucide-react"],
+  "registryDependencies": ["button", "utils"],
+  "files": [
+    {
+      "path": "ui/voice-button.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/voice-button.tsx",
+      "content": "import { Button } from '@/components/ui/button';\nimport { cn } from '@/lib/utils';\nimport { Mic, MicOff } from 'lucide-react';\nimport * as React from 'react';\n\nexport interface VoiceButtonProps {\n  isListening?: boolean;\n  onToggle?: () => void;\n  disabled?: boolean;\n  className?: string;\n}\n\nexport function VoiceButton({\n  isListening = false,\n  onToggle,\n  disabled,\n  className,\n}: VoiceButtonProps) {\n  return (\n    <Button\n      type=\"button\"\n      variant={isListening ? 'destructive' : 'default'}\n      className={cn('min-w-36 gap-2', className)}\n      onClick={onToggle}\n      disabled={disabled}\n    >\n      {isListening ? <MicOff /> : <Mic />}\n      {isListening ? 'Stop listening' : 'Start speaking'}\n    </Button>\n  );\n}\n"
+    }
+  ]
+}

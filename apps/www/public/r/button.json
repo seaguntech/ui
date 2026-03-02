@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button",
+  "type": "registry:ui",
+  "description": "Button component with variants",
+  "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "ui/button.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/button.tsx",
+      "content": "import { cn } from '@/lib/utils';\nimport { Slot } from '@radix-ui/react-slot';\nimport { type VariantProps, cva } from 'class-variance-authority';\nimport * as React from 'react';\n\nconst buttonVariants = cva(\n  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4',\n  {\n    variants: {\n      variant: {\n        default: 'bg-primary text-primary-foreground hover:opacity-90',\n        secondary: 'bg-secondary text-secondary-foreground hover:opacity-90',\n        outline: 'border border-input bg-background hover:bg-accent',\n        ghost: 'hover:bg-accent',\n        destructive:\n          'bg-destructive text-destructive-foreground hover:opacity-90',\n        link: 'text-primary underline-offset-4 hover:underline',\n      },\n      size: {\n        default: 'h-10 px-4 py-2',\n        sm: 'h-9 px-3',\n        lg: 'h-11 px-8',\n        icon: 'size-10',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n      size: 'default',\n    },\n  },\n);\n\nexport interface ButtonProps\n  extends\n    React.ButtonHTMLAttributes<HTMLButtonElement>,\n    VariantProps<typeof buttonVariants> {\n  asChild?: boolean;\n}\n\nexport function Button({\n  className,\n  variant,\n  size,\n  asChild = false,\n  ...props\n}: ButtonProps) {\n  const Comp = asChild ? Slot : 'button';\n\n  return (\n    <Comp\n      className={cn(buttonVariants({ variant, size, className }))}\n      {...props}\n    />\n  );\n}\n\nexport { buttonVariants };\n"
+    }
+  ]
+}

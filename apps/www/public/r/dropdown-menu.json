@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dropdown-menu",
+  "type": "registry:ui",
+  "description": "Dropdown menu primitives",
+  "dependencies": ["@radix-ui/react-dropdown-menu"],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "ui/dropdown-menu.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/dropdown-menu.tsx",
+      "content": "import { cn } from '@/lib/utils';\nimport * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';\nimport * as React from 'react';\n\nexport function DropdownMenu(\n  props: React.ComponentProps<typeof DropdownMenuPrimitive.Root>,\n) {\n  return <DropdownMenuPrimitive.Root {...props} />;\n}\n\nexport function DropdownMenuTrigger(\n  props: React.ComponentProps<typeof DropdownMenuPrimitive.Trigger>,\n) {\n  return <DropdownMenuPrimitive.Trigger {...props} />;\n}\n\nexport function DropdownMenuContent({\n  className,\n  sideOffset = 4,\n  ...props\n}: React.ComponentProps<typeof DropdownMenuPrimitive.Content>) {\n  return (\n    <DropdownMenuPrimitive.Portal>\n      <DropdownMenuPrimitive.Content\n        sideOffset={sideOffset}\n        className={cn(\n          'bg-popover text-popover-foreground z-50 min-w-40 overflow-hidden rounded-md border p-1 shadow-md',\n          className,\n        )}\n        {...props}\n      />\n    </DropdownMenuPrimitive.Portal>\n  );\n}\n\nexport function DropdownMenuItem({\n  className,\n  ...props\n}: React.ComponentProps<typeof DropdownMenuPrimitive.Item>) {\n  return (\n    <DropdownMenuPrimitive.Item\n      className={cn(\n        'focus:bg-accent focus:text-accent-foreground relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function DropdownMenuSeparator({\n  className,\n  ...props\n}: React.ComponentProps<typeof DropdownMenuPrimitive.Separator>) {\n  return (\n    <DropdownMenuPrimitive.Separator\n      className={cn('bg-border -mx-1 my-1 h-px', className)}\n      {...props}\n    />\n  );\n}\n\nexport function DropdownMenuLabel({\n  className,\n  ...props\n}: React.ComponentProps<typeof DropdownMenuPrimitive.Label>) {\n  return (\n    <DropdownMenuPrimitive.Label\n      className={cn('px-2 py-1.5 text-sm font-medium', className)}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ]
+}

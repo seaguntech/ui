@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "magnetic-button",
+  "type": "registry:ui",
+  "description": "Button that tracks mouse position with a magnetic effect",
+  "dependencies": ["framer-motion"],
+  "registryDependencies": ["button"],
+  "files": [
+    {
+      "path": "ui/magnetic-button.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/magnetic-button.tsx",
+      "content": "'use client';\n\nimport { Button, type ButtonProps } from '@/components/ui/button';\nimport { motion } from 'framer-motion';\nimport React, { useRef, useState } from 'react';\n\nexport interface MagneticButtonProps extends ButtonProps {\n  children: React.ReactNode;\n  distance?: number;\n}\n\nexport function MagneticButton({\n  children,\n  distance = 10,\n  className,\n  ...props\n}: MagneticButtonProps) {\n  const [position, setPosition] = useState({ x: 0, y: 0 });\n  const ref = useRef<HTMLDivElement>(null);\n\n  const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {\n    const { clientX, clientY } = e;\n    if (!ref.current) return;\n    const { height, width, left, top } = ref.current.getBoundingClientRect();\n    const middleX = clientX - (left + width / 2);\n    const middleY = clientY - (top + height / 2);\n    const normalizedX = middleX / Math.max(width / 2, 1);\n    const normalizedY = middleY / Math.max(height / 2, 1);\n\n    setPosition({\n      x: normalizedX * distance,\n      y: normalizedY * distance,\n    });\n  };\n\n  const reset = () => {\n    setPosition({ x: 0, y: 0 });\n  };\n\n  return (\n    <motion.div\n      style={{ position: 'relative', display: 'inline-block' }}\n      ref={ref}\n      onMouseMove={handleMouse}\n      onMouseLeave={reset}\n      animate={{ x: position.x, y: position.y }}\n      transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.1 }}\n    >\n      <Button className={className} {...props}>\n        {children}\n      </Button>\n    </motion.div>\n  );\n}\n"
+    }
+  ]
+}

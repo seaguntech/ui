@@ -1,0 +1,24 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "build:registry": {
+      "dependsOn": ["^build"]
+    },
+    "validate:registry": {
+      "dependsOn": ["build:registry"]
+    },
+    "check-types": {
+      "outputs": ["tsconfig.tsbuildinfo"]
+    },
+    "dev": {
+      "persistent": true
+    },
+    "start": {
+      "cache": false,
+      "persistent": true
+    },
+    "test:visual": {
+      "cache": false
+    }
+  }
+}

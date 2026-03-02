@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator",
+  "type": "registry:ui",
+  "description": "Visual separator primitive",
+  "dependencies": ["@radix-ui/react-separator"],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "ui/separator.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/separator.tsx",
+      "content": "import { cn } from '@/lib/utils';\nimport * as SeparatorPrimitive from '@radix-ui/react-separator';\nimport * as React from 'react';\n\nexport function Separator({\n  className,\n  orientation = 'horizontal',\n  decorative = true,\n  ...props\n}: React.ComponentProps<typeof SeparatorPrimitive.Root>) {\n  return (\n    <SeparatorPrimitive.Root\n      decorative={decorative}\n      orientation={orientation}\n      className={cn(\n        'bg-border shrink-0',\n        orientation === 'horizontal' ? 'h-px w-full' : 'h-full w-px',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n"
+    }
+  ]
+}

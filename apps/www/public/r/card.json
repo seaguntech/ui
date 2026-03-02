@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card",
+  "type": "registry:ui",
+  "description": "Card surface primitives",
+  "dependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "ui/card.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/card.tsx",
+      "content": "import { cn } from '@/lib/utils';\nimport * as React from 'react';\n\nexport function Card({ className, ...props }: React.ComponentProps<'div'>) {\n  return (\n    <div\n      className={cn(\n        'rounded-lg border bg-card text-card-foreground shadow-sm',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function CardHeader({\n  className,\n  ...props\n}: React.ComponentProps<'div'>) {\n  return (\n    <div\n      className={cn('flex flex-col space-y-1.5 p-6', className)}\n      {...props}\n    />\n  );\n}\n\nexport function CardTitle({ className, ...props }: React.ComponentProps<'h3'>) {\n  return (\n    <h3\n      className={cn(\n        'text-lg font-semibold leading-none tracking-tight',\n        className,\n      )}\n      {...props}\n    />\n  );\n}\n\nexport function CardDescription({\n  className,\n  ...props\n}: React.ComponentProps<'p'>) {\n  return (\n    <p className={cn('text-sm text-muted-foreground', className)} {...props} />\n  );\n}\n\nexport function CardContent({\n  className,\n  ...props\n}: React.ComponentProps<'div'>) {\n  return <div className={cn('p-6 pt-0', className)} {...props} />;\n}\n\nexport function CardFooter({\n  className,\n  ...props\n}: React.ComponentProps<'div'>) {\n  return (\n    <div className={cn('flex items-center p-6 pt-0', className)} {...props} />\n  );\n}\n"
+    }
+  ]
+}

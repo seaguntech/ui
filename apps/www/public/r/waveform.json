@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "waveform",
+  "type": "registry:ui",
+  "description": "Simple waveform visualization",
+  "dependencies": [],
+  "registryDependencies": ["utils"],
+  "files": [
+    {
+      "path": "ui/waveform.tsx",
+      "type": "registry:ui",
+      "target": "components/ui/waveform.tsx",
+      "content": "import { cn } from '@/lib/utils';\nimport * as React from 'react';\n\nexport interface WaveformProps {\n  bars?: number;\n  active?: boolean;\n  className?: string;\n}\n\nexport function Waveform({\n  bars = 24,\n  active = false,\n  className,\n}: WaveformProps) {\n  const data = React.useMemo(() => {\n    return Array.from({ length: bars }, (_, index) => ((index % 7) + 1) / 7);\n  }, [bars]);\n\n  return (\n    <div className={cn('flex h-10 items-end gap-1 rounded-md px-2', className)}>\n      {data.map((value, index) => (\n        <div\n          key={index}\n          className={cn(\n            'bg-primary/80 w-1 rounded-full transition-all',\n            active ? 'animate-pulse' : '',\n          )}\n          style={{ height: `${Math.max(value * 100, 20)}%` }}\n        />\n      ))}\n    </div>\n  );\n}\n"
+    }
+  ]
+}
