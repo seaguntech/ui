@@ -1,8 +1,11 @@
 {
   "name": "@seaguntech/design-system",
-  "private": true,
+  "private": false,
   "version": "0.1.0",
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Tailwind CSS v4 design tokens for Seaguntech UI",
   "exports": {
     ".": "./globals.css",
