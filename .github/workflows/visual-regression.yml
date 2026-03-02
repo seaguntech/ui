@@ -1,0 +1,47 @@
+name: Visual Regression
+
+on:
+  pull_request:
+    paths:
+      - 'apps/www/**'
+      - 'packages/ui/**'
+      - 'packages/design-system/**'
+      - '.github/workflows/visual-regression.yml'
+
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.25.0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: pnpm --filter @seaguntech/www exec playwright install --with-deps chromium
+
+      - name: Run visual tests
+        run: pnpm --filter @seaguntech/www test:visual
+
+      - name: Upload visual artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-artifacts
+          path: |
+            apps/www/playwright-report
+            apps/www/test-results

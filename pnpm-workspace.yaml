@@ -4,7 +4,7 @@ packages:
   - configs/*
 
 catalog:
-  '@changesets/cli': ^2.29.7
+  '@changesets/cli': ^2.29.8
   '@commitlint/cli': ^20.1.0
   '@commitlint/config-conventional': ^20.0.0
   '@eslint/js': ^9.39.1
@@ -14,8 +14,8 @@ catalog:
   lint-staged: ^16.2.7
   prettier: ^3.7.4
   tsup: ^8.5.1
-  turbo: ^2.7.5
-  typescript: 5.9.2
+  turbo: ^2.8.11
+  typescript: ^5.9.3
 
 catalogs:
   eslint-plugins:
@@ -30,29 +30,22 @@ catalogs:
     eslint-plugin-turbo: ^2.6.0
     globals: ^16.5.0
     typescript-eslint: ^8.46.3
-  logger-libs:
-    pino: ^9.9.4
-    pino-http: ^10.3.0
-    pino-pretty: ^13.1.1
   nextjs:
     next: ^16.1.0
   prettier-plugins:
     '@trivago/prettier-plugin-sort-imports': ^6.0.0
   radix-ui:
+    '@radix-ui/react-dialog': 1.1.15
+    '@radix-ui/react-dropdown-menu': 2.1.16
     '@radix-ui/react-label': 2.1.7
+    '@radix-ui/react-separator': 1.1.8
     '@radix-ui/react-slot': 1.2.4
+    '@radix-ui/react-tabs': 1.1.13
   react19:
     '@types/react': ^19.1.0
     '@types/react-dom': ^19.1.0
     react: 19.2.3
     react-dom: 19.2.3
-  storybook:
-    '@storybook/addon-a11y': 8.6.15
-    '@storybook/addon-essentials': 8.6.15
-    '@storybook/blocks': 8.6.15
-    '@storybook/react': 8.6.15
-    '@storybook/react-vite': 8.6.15
-    storybook: 8.6.15
   testing:
     '@testing-library/jest-dom': ^6.9.1
     '@testing-library/react': ^16.0.0

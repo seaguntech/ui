@@ -1,54 +1,21 @@
-/*
- * Dark Theme Configuration
- * Color scheme for dark mode
- */
-
 .dark {
-  /* Surface colors */
   --color-background: oklch(0.14 0.008 250);
   --color-foreground: oklch(0.99 0 0);
-  --color-surface: oklch(0.14 0.008 250);
-  --color-surface-raised: oklch(0.2 0.012 250);
-  --color-surface-sunken: oklch(0.1 0.006 250);
-
-  /* Text colors */
-  --color-text-primary: oklch(0.99 0 0);
-  --color-text-secondary: oklch(0.73 0.016 250);
-  --color-text-tertiary: oklch(0.58 0.02 250);
-  --color-text-disabled: oklch(0.48 0.02 250);
-  --color-text-inverse: oklch(0.14 0.008 250);
-
-  /* Border colors */
-  --color-border-default: oklch(0.28 0.015 250);
-  --color-border-subtle: oklch(0.2 0.012 250);
-  --color-border-strong: oklch(0.48 0.02 250);
-
-  /* Interactive colors */
-  --color-primary: var(--color-brand-400);
-  --color-primary-hover: var(--color-brand-300);
-  --color-primary-active: var(--color-brand-200);
-  --color-primary-foreground: oklch(0.14 0.008 250);
-
-  /* Component-specific colors (shadcn/ui compatibility) */
-  --color-card: oklch(0.14 0.008 250);
+  --color-card: oklch(0.2 0.012 250);
   --color-card-foreground: oklch(0.99 0 0);
-
-  --color-popover: oklch(0.14 0.008 250);
+  --color-popover: oklch(0.2 0.012 250);
   --color-popover-foreground: oklch(0.99 0 0);
-
-  --color-secondary: oklch(0.2 0.012 250);
+  --color-primary: var(--color-brand-400);
+  --color-primary-foreground: oklch(0.14 0.008 250);
+  --color-secondary: oklch(0.28 0.015 250);
   --color-secondary-foreground: oklch(0.99 0 0);
-
-  --color-muted: oklch(0.2 0.012 250);
+  --color-muted: oklch(0.28 0.015 250);
   --color-muted-foreground: oklch(0.73 0.016 250);
-
-  --color-accent: oklch(0.2 0.012 250);
+  --color-accent: oklch(0.28 0.015 250);
   --color-accent-foreground: oklch(0.99 0 0);
-
   --color-destructive: var(--color-error-400);
   --color-destructive-foreground: oklch(0.99 0 0);
-
+  --color-border: oklch(0.28 0.015 250);
   --color-input: oklch(0.28 0.015 250);
   --color-ring: var(--color-brand-400);
-  --color-ring-offset: oklch(0.14 0.008 250);
 }

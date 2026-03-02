@@ -3,274 +3,37 @@
 @import './theme-light.css';
 @import './theme-dark.css';
 
-/*
- * Global Styles for Design System
- * Applied automatically when importing this file
- */
-
 @layer base {
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-    border-width: 0;
-    border-style: solid;
-    border-color: var(--color-border-default);
+  * {
+    border-color: var(--color-border);
   }
 
   html {
-    -webkit-text-size-adjust: 100%;
-    -moz-tab-size: 4;
-    tab-size: 4;
     font-family: var(--font-sans);
-    font-feature-settings: normal;
-    font-variation-settings: normal;
-    line-height: var(--line-height-normal);
   }
 
   body {
     margin: 0;
-    line-height: inherit;
-    background-color: var(--color-background);
+    background: var(--color-background);
     color: var(--color-foreground);
-    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Typography defaults */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-size: inherit;
-    font-weight: inherit;
-    margin: 0;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  /* List defaults */
-  ol,
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  /* Form element defaults */
-  button,
-  input,
-  optgroup,
-  select,
-  textarea {
-    font-family: inherit;
-    font-size: 100%;
-    font-weight: inherit;
-    line-height: inherit;
-    color: inherit;
-    margin: 0;
-    padding: 0;
-  }
-
-  button {
-    background-color: transparent;
-    background-image: none;
-    cursor: pointer;
-  }
-
-  button:disabled {
-    cursor: not-allowed;
-  }
-
-  /* Link defaults */
-  a {
-    color: inherit;
-    text-decoration: inherit;
-  }
-
-  /* Image defaults */
-  img,
-  svg,
-  video,
-  canvas,
-  audio,
-  iframe,
-  embed,
-  object {
-    display: block;
-    vertical-align: middle;
-  }
-
-  img,
-  video {
-    max-width: 100%;
-    height: auto;
-  }
-
-  /* Table defaults */
-  table {
-    text-indent: 0;
-    border-color: inherit;
-    border-collapse: collapse;
-  }
-
-  /* Form input defaults */
-  input::placeholder,
-  textarea::placeholder {
-    opacity: 1;
-    color: var(--color-text-tertiary);
-  }
-
-  /* Focus visible styles */
   :focus-visible {
     outline: 2px solid var(--color-ring);
     outline-offset: 2px;
   }
 }
 
-/*
- * Custom Utility Classes
- * Using @utility at top level (cannot be nested)
- */
-
-/* Background utilities */
-@utility bg-surface {
-  background-color: var(--color-surface);
-}
-
-@utility bg-surface-raised {
-  background-color: var(--color-surface-raised);
-}
-
-@utility bg-surface-sunken {
-  background-color: var(--color-surface-sunken);
-}
-
-/* Text foreground utilities (avoid colliding with Tailwind color utilities like text-primary) */
 @utility text-fg-primary {
-  color: var(--color-text-primary);
+  color: var(--color-foreground);
 }
 
-@utility text-fg-secondary {
-  color: var(--color-text-secondary);
+@utility text-fg-muted {
+  color: var(--color-muted-foreground);
 }
 
-@utility text-fg-tertiary {
-  color: var(--color-text-tertiary);
-}
-
-@utility text-fg-disabled {
-  color: var(--color-text-disabled);
-}
-
-@utility text-fg-inverse {
-  color: var(--color-text-inverse);
-}
-
-/* Semantic typography utilities */
-@utility text-display-lg {
-  font-size: var(--font-size-6xl);
-  line-height: var(--line-height-tight);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--letter-spacing-tight);
-}
-
-@utility text-display-md {
-  font-size: var(--font-size-5xl);
-  line-height: var(--line-height-tight);
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: var(--letter-spacing-tight);
-}
-
-@utility text-heading-lg {
-  font-size: var(--font-size-3xl);
-  line-height: var(--line-height-snug);
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: var(--letter-spacing-tight);
-}
-
-@utility text-heading-md {
-  font-size: var(--font-size-2xl);
-  line-height: var(--line-height-snug);
-  font-weight: var(--font-weight-semibold);
-}
-
-@utility text-heading-sm {
-  font-size: var(--font-size-xl);
-  line-height: var(--line-height-snug);
-  font-weight: var(--font-weight-medium);
-}
-
-@utility text-body-lg {
-  font-size: var(--font-size-lg);
-  line-height: var(--line-height-relaxed);
-  font-weight: var(--font-weight-normal);
-}
-
-@utility text-body-md {
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-normal);
-  font-weight: var(--font-weight-normal);
-}
-
-@utility text-body-sm {
-  font-size: var(--font-size-sm);
-  line-height: var(--line-height-normal);
-  font-weight: var(--font-weight-normal);
-}
-
-@utility text-caption {
-  font-size: var(--font-size-xs);
-  line-height: var(--line-height-normal);
-  letter-spacing: var(--letter-spacing-wide);
-  font-weight: var(--font-weight-medium);
-}
-
-/* Border utilities */
-@utility border-default {
-  border-color: var(--color-border-default);
-}
-
-@utility border-subtle {
-  border-color: var(--color-border-subtle);
-}
-
-@utility border-strong {
-  border-color: var(--color-border-strong);
-}
-
-/* Focus ring utility */
-@utility focus-ring {
-  outline: 2px solid var(--color-ring);
-  outline-offset: 2px;
-}
-
-/* Elevation utilities using shadows */
-@utility elevation-xs {
-  box-shadow: var(--shadow-xs);
-}
-
-@utility elevation-sm {
-  box-shadow: var(--shadow-sm);
-}
-
-@utility elevation-md {
-  box-shadow: var(--shadow-md);
-}
-
-@utility elevation-lg {
-  box-shadow: var(--shadow-lg);
-}
-
-@utility elevation-xl {
-  box-shadow: var(--shadow-xl);
-}
-
-@utility elevation-2xl {
-  box-shadow: var(--shadow-2xl);
+@utility bg-surface {
+  background-color: var(--color-card);
 }

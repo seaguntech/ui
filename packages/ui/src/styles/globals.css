@@ -1,6 +1,27 @@
 @import '@seaguntech/design-system';
 
-/*
- * UI Package Styles
- * Additional component-specific styles can be added here
- */
+@layer components {
+  .badge-new {
+    border-color: color-mix(in oklch, var(--color-brand-500) 35%, transparent);
+    background-color: color-mix(
+      in oklch,
+      var(--color-brand-500) 18%,
+      var(--color-background)
+    );
+    color: var(--color-brand-700);
+    box-shadow: 0 0 10px
+      color-mix(in oklch, var(--color-brand-500) 20%, transparent);
+  }
+
+  .dark .badge-new {
+    border-color: color-mix(in oklch, var(--color-brand-400) 50%, transparent);
+    background-color: color-mix(
+      in oklch,
+      var(--color-brand-500) 32%,
+      var(--color-background)
+    );
+    color: var(--color-brand-300);
+    box-shadow: 0 0 14px
+      color-mix(in oklch, var(--color-brand-500) 28%, transparent);
+  }
+}

@@ -19,12 +19,11 @@
   },
   "scripts": {
     "dev": "turbo watch dev",
-    "dev:web": "turbo watch dev --filter @seaguntech/web",
-    "dev:storybook": "turbo watch dev --filter @seaguntech/storybook",
+    "dev:www": "turbo watch dev --filter @seaguntech/www",
+    "dev:all": "turbo watch dev",
     "build": "turbo run build",
     "build:apps": "turbo run build --filter=\"./apps/*\"",
     "build:packages": "turbo run build --filter=\"./packages/*\"",
-    "build:storybook": "turbo run build --filter @seaguntech/storybook",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "format": "turbo run format",
@@ -37,8 +36,10 @@
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "turbo run build && changeset publish",
-    "init:template": "node scripts/init-template.mjs",
-    "init:template:dry-run": "node scripts/init-template.mjs --dry-run",
+    "build:registry": "turbo run build:registry --filter=@seaguntech/www",
+    "validate:registry": "turbo run validate:registry --filter=@seaguntech/www",
+    "verify": "turbo run build:registry validate:registry lint check-types test build",
+    "verify:visual": "turbo run test:visual --filter=@seaguntech/www",
     "prepare": "husky"
   },
   "devDependencies": {

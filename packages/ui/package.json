@@ -1,33 +1,19 @@
 {
   "name": "@seaguntech/ui",
   "version": "0.1.0",
-  "license": "MIT",
-  "description": "Shared UI component library for the Seagun Tech UI monorepo",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/seaguntech/ui.git"
-  },
-  "homepage": "https://github.com/seaguntech/ui",
-  "bugs": {
-    "url": "https://github.com/seaguntech/ui/issues"
-  },
-  "keywords": [
-    "ui",
-    "react",
-    "tailwindcss",
-    "shadcn",
-    "component-library"
-  ],
   "private": false,
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "require": "./dist/index.cjs"
     },
     "./styles.css": "./src/styles/globals.css"
   },
@@ -39,22 +25,31 @@
     "src/styles/globals.css"
   ],
   "scripts": {
-    "build": "tsup",
     "dev": "tsup",
+    "build": "tsup",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --max-warnings 0 --fix",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "check-types": "tsc --noEmit",
-    "clean": "rm -rf dist node_modules",
-    "test": "vitest run"
+    "test": "vitest run --passWithNoTests",
+    "test:watch": "vitest --passWithNoTests",
+    "test:coverage": "vitest run --coverage --passWithNoTests",
+    "clean": "rm -rf dist coverage"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "catalog:radix-ui",
+    "@radix-ui/react-dropdown-menu": "catalog:radix-ui",
     "@radix-ui/react-label": "catalog:radix-ui",
+    "@radix-ui/react-scroll-area": "^1.2.10",
+    "@radix-ui/react-separator": "catalog:radix-ui",
     "@radix-ui/react-slot": "catalog:radix-ui",
+    "@radix-ui/react-tabs": "catalog:radix-ui",
     "@seaguntech/design-system": "workspace:*",
     "class-variance-authority": "catalog:web-ui",
     "clsx": "catalog:web-ui",
+    "cmdk": "^1.1.1",
+    "framer-motion": "^12.34.3",
     "lucide-react": "catalog:web-ui",
     "tailwind-merge": "catalog:web-ui"
   },
@@ -63,24 +58,21 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@storybook/react": "catalog:storybook",
+    "@seaguntech/eslint-config": "workspace:*",
+    "@seaguntech/prettier-config": "workspace:*",
+    "@seaguntech/typescript-config": "workspace:*",
+    "@seaguntech/vitest-config": "workspace:*",
     "@types/node": "catalog:",
     "@types/react": "catalog:react19",
     "@types/react-dom": "catalog:react19",
     "@vitest/coverage-v8": "catalog:testing",
     "@vitest/ui": "catalog:testing",
-    "@seaguntech/eslint-config": "workspace:*",
-    "@seaguntech/prettier-config": "workspace:*",
-    "@seaguntech/typescript-config": "workspace:*",
-    "@seaguntech/vitest-config": "workspace:*",
     "eslint": "catalog:",
     "postcss": "catalog:web-ui",
     "prettier": "catalog:",
-    "storybook": "catalog:storybook",
     "tailwindcss": "catalog:web-ui",
     "tsup": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:testing"
-  },
-  "prettier": "@seaguntech/prettier-config/base"
+  }
 }

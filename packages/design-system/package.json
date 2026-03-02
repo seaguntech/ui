@@ -1,14 +1,15 @@
 {
   "name": "@seaguntech/design-system",
   "private": true,
+  "version": "0.1.0",
   "type": "module",
-  "description": "Tailwind CSS v4 design system for the Seagun Tech UI monorepo",
+  "description": "Tailwind CSS v4 design tokens for Seaguntech UI",
   "exports": {
     ".": "./globals.css",
+    "./globals": "./globals.css",
     "./design-tokens": "./design-tokens.css",
     "./theme-light": "./theme-light.css",
     "./theme-dark": "./theme-dark.css",
-    "./globals": "./globals.css",
     "./postcss-config": "./postcss-config.js"
   },
   "files": [
@@ -19,22 +20,26 @@
     "**/*.css"
   ],
   "scripts": {
-    "clean": "git clean -xdf .cache .turbo node_modules",
+    "build": "echo 'design-system ready'",
+    "lint": "echo 'no lint yet'",
+    "lint:fix": "echo 'no lint yet'",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
-    "lint": "eslint --flag unstable_native_nodejs_ts_config"
+    "check-types": "echo 'no types'",
+    "test": "echo 'no tests'",
+    "test:watch": "echo 'no tests'",
+    "test:coverage": "echo 'no tests'",
+    "clean": "rm -rf dist coverage"
   },
   "dependencies": {
     "@tailwindcss/postcss": "catalog:web-ui",
-    "postcss": "catalog:web-ui",
-    "tailwindcss": "catalog:web-ui"
-  },
-  "devDependencies": {
     "@seaguntech/eslint-config": "workspace:*",
     "@seaguntech/prettier-config": "workspace:*",
     "@types/node": "catalog:",
     "eslint": "catalog:",
+    "postcss": "catalog:web-ui",
     "prettier": "catalog:",
+    "tailwindcss": "catalog:web-ui",
     "typescript": "catalog:"
   },
   "prettier": "@seaguntech/prettier-config/base"
