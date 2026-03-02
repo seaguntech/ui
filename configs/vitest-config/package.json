@@ -3,12 +3,21 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "main": "./index.ts",
+  "main": "./index.js",
   "types": "./index.ts",
   "exports": {
-    ".": "./index.ts",
-    "./react": "./react.ts",
-    "./node": "./node.ts"
+    ".": {
+      "types": "./index.ts",
+      "default": "./index.js"
+    },
+    "./react": {
+      "types": "./react.ts",
+      "default": "./react.js"
+    },
+    "./node": {
+      "types": "./node.ts",
+      "default": "./node.js"
+    }
   },
   "dependencies": {
     "vitest": "catalog:testing",
