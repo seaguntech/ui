@@ -10,6 +10,7 @@ on:
       - 'package.json'
       - 'turbo.json'
       - '.github/workflows/ci.yml'
+      - '.github/workflows/release.yml'
   push:
     branches:
       - main
@@ -21,6 +22,7 @@ on:
       - 'package.json'
       - 'turbo.json'
       - '.github/workflows/ci.yml'
+      - '.github/workflows/release.yml'
 
 jobs:
   verify:
