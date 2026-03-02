@@ -40,15 +40,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Validate npm auth setup
-        run: |
-          if [ -z "${NPM_TOKEN}" ]; then
-            echo "::error::Missing NPM_TOKEN secret. Add a publish token in GitHub Secrets (Settings > Secrets and variables > Actions > New repository secret)."
-            exit 1
-          fi
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
       - name: Verify workspace
         run: pnpm verify
 
@@ -62,5 +53,4 @@ jobs:
           title: 'chore(release): version packages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
