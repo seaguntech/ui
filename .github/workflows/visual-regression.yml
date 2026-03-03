@@ -6,6 +6,7 @@ on:
       - 'apps/www/**'
       - 'packages/ui/**'
       - 'packages/design-system/**'
+      - '.changeset/**'
       - '.github/workflows/ci.yml'
       - '.github/workflows/release.yml'
       - '.github/workflows/visual-regression.yml'
