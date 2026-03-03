@@ -1,6 +1,6 @@
 import type { PackageManager } from '../types.js';
 import { execa } from 'execa';
-import { pathExists, readJson } from 'fs-extra';
+import fsExtra from 'fs-extra';
 import path from 'node:path';
 
 const LOCKFILE_PRIORITY: Array<[PackageManager, string]> = [
@@ -14,7 +14,7 @@ export async function detectPackageManager(
   cwd: string,
 ): Promise<PackageManager> {
   for (const [manager, lockFile] of LOCKFILE_PRIORITY) {
-    const exists = await pathExists(path.join(cwd, lockFile));
+    const exists = await fsExtra.pathExists(path.join(cwd, lockFile));
     if (exists) {
       return manager;
     }
@@ -26,11 +26,11 @@ export async function detectPackageManager(
 export async function readProjectPackageJson(cwd: string) {
   const packageJsonPath = path.join(cwd, 'package.json');
 
-  if (!(await pathExists(packageJsonPath))) {
+  if (!(await fsExtra.pathExists(packageJsonPath))) {
     throw new Error(`package.json not found in ${cwd}`);
   }
 
-  return readJson(packageJsonPath);
+  return fsExtra.readJson(packageJsonPath);
 }
 
 export function getMissingDependencies(

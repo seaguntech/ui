@@ -14,7 +14,7 @@ import { notFound } from 'next/navigation';
 function commandFor(pm: 'npm' | 'pnpm' | 'yarn' | 'bun', name: string) {
   if (pm === 'npm') return `npx @seaguntech/cli@latest components add ${name}`;
   if (pm === 'pnpm')
-    return `pnpm dlx @seaguntech/cli@latest components add ${name}`;
+    return `pnpm --package=@seaguntech/cli@latest dlx seagun components add ${name}`;
   if (pm === 'yarn')
     return `yarn dlx @seaguntech/cli@latest components add ${name}`;
   return `bunx @seaguntech/cli@latest components add ${name}`;

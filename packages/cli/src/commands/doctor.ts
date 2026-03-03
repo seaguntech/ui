@@ -4,7 +4,7 @@ import {
   fetchRegistriesIndex,
   fetchRegistryIndex,
 } from '../core/registry-client.js';
-import { pathExists } from 'fs-extra';
+import fsExtra from 'fs-extra';
 import path from 'node:path';
 
 type DoctorOptions = {
@@ -23,7 +23,7 @@ export async function runDoctor(options: DoctorOptions) {
     hasErrors = true;
   }
 
-  const packageJsonExists = await pathExists(
+  const packageJsonExists = await fsExtra.pathExists(
     path.join(options.cwd, 'package.json'),
   );
   if (packageJsonExists) {
