@@ -63,6 +63,30 @@ describe('writeRegistryFiles', () => {
     ).rejects.toThrow('File already exists');
   });
 
+  it('skips when file already has identical content', async () => {
+    const cwd = await mkdtemp(path.join(tmpdir(), 'seagun-cli-'));
+    tempDirs.push(cwd);
+    const targetPath = path.join(cwd, 'components/ui/button.tsx');
+    await mkdir(path.dirname(targetPath), { recursive: true });
+    await writeFile(targetPath, 'export const Button = () => null;\n', 'utf-8');
+
+    const result = await writeRegistryFiles({
+      cwd,
+      files: [
+        {
+          path: 'ui/button.tsx',
+          target: 'components/ui/button.tsx',
+          type: 'registry:ui',
+          content: 'export const Button = () => null;\n',
+        },
+      ],
+      policy: 'fail',
+    });
+
+    expect(result.written).toEqual([]);
+    expect(result.skipped).toEqual(['components/ui/button.tsx']);
+  });
+
   it('writes into src when project alias points to src', async () => {
     const cwd = await mkdtemp(path.join(tmpdir(), 'seagun-cli-'));
     tempDirs.push(cwd);

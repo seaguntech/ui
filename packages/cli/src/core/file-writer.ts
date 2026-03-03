@@ -35,6 +35,14 @@ export async function writeRegistryFiles(
       const targetPath = path.join(options.cwd, relativeTarget);
       const exists = await fsExtra.pathExists(targetPath);
 
+      if (exists) {
+        const currentContent = await fsExtra.readFile(targetPath, 'utf-8');
+        if (isSameContent(currentContent, file.content)) {
+          skipped.push(relativeTarget);
+          continue;
+        }
+      }
+
       if (exists && options.policy === 'skip') {
         skipped.push(relativeTarget);
         continue;
@@ -81,4 +89,15 @@ async function rollbackWrites(
   for (const [filePath, originalContent] of overwrittenFiles.entries()) {
     await fsExtra.writeFile(filePath, originalContent, 'utf-8');
   }
+}
+
+function isSameContent(currentContent: string, incomingContent: string) {
+  return (
+    normalizeLineEndings(currentContent) ===
+    normalizeLineEndings(incomingContent)
+  );
+}
+
+function normalizeLineEndings(value: string) {
+  return value.replace(/\r\n/g, '\n');
 }
