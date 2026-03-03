@@ -45,3 +45,5 @@
 
 - `NPM_TOKEN`: npm publish token that bypasses OTP for CI publishing
 - `GITHUB_TOKEN`: provided by Actions for release PRs and commits
+- `CHANGESETS_GH_TOKEN`: PAT used by Changesets to open release PRs that
+  trigger required checks (`verify`, `visual`)
