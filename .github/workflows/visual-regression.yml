@@ -10,14 +10,27 @@ on:
       - '.github/workflows/ci.yml'
       - '.github/workflows/release.yml'
       - '.github/workflows/visual-regression.yml'
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'apps/www/**'
+      - 'packages/ui/**'
+      - 'packages/design-system/**'
+      - '.changeset/**'
+      - '.github/workflows/ci.yml'
+      - '.github/workflows/release.yml'
+      - '.github/workflows/visual-regression.yml'
 
 jobs:
   visual:
+    if: ${{ github.event_name != 'pull_request_target' || (startsWith(github.event.pull_request.head.ref, 'changeset-release/') && github.event.pull_request.user.login == 'github-actions[bot]') }}
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.head.sha || github.sha }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
