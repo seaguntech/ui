@@ -12,7 +12,3 @@ export function getRegistryBaseUrl() {
 
   return trimTrailingSlashes(rawUrl);
 }
-
-export function getRegistryItemUrl(name: string) {
-  return `${getRegistryBaseUrl()}/r/${name}.json`;
-}
