@@ -28,14 +28,25 @@ export default function RegistryGuidePage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Install a component</CardTitle>
+          <CardTitle>Install via Seagun CLI</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-sm">
+          <code className="block rounded-md bg-muted p-3">
+            pnpm dlx @seaguntech/cli@latest components add button
+          </code>
+          <code className="block rounded-md bg-muted p-3">
+            pnpm dlx @seaguntech/cli@latest components add voice-input-bar
+          </code>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Direct registry URL (advanced)</CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm">
           <code className="block rounded-md bg-muted p-3">
             pnpm dlx shadcn@latest add {baseUrl}/r/button.json
-          </code>
-          <code className="block rounded-md bg-muted p-3">
-            pnpm dlx shadcn@latest add @seaguntech/button
           </code>
         </CardContent>
       </Card>

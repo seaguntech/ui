@@ -5,18 +5,19 @@ import { InstallationTabs } from '@/components/installation-tabs';
 import { getComponentDocNeighbors, isDocsComponentNew } from '@/lib/docs-nav';
 import { getRegistryItem } from '@/lib/registry';
 import { getRegistrySource } from '@/lib/registry-source';
-import { getRegistryItemUrl } from '@/lib/registry-url';
 import { highlightCode } from '@/lib/shiki';
 import { Badge, Button } from '@seaguntech/ui';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-function commandFor(pm: 'npm' | 'pnpm' | 'yarn' | 'bun', itemUrl: string) {
-  if (pm === 'npm') return `npx shadcn@latest add "${itemUrl}"`;
-  if (pm === 'pnpm') return `pnpm dlx shadcn@latest add "${itemUrl}"`;
-  if (pm === 'yarn') return `yarn dlx shadcn@latest add "${itemUrl}"`;
-  return `bunx --bun shadcn@latest add "${itemUrl}"`;
+function commandFor(pm: 'npm' | 'pnpm' | 'yarn' | 'bun', name: string) {
+  if (pm === 'npm') return `npx @seaguntech/cli@latest components add ${name}`;
+  if (pm === 'pnpm')
+    return `pnpm dlx @seaguntech/cli@latest components add ${name}`;
+  if (pm === 'yarn')
+    return `yarn dlx @seaguntech/cli@latest components add ${name}`;
+  return `bunx @seaguntech/cli@latest components add ${name}`;
 }
 
 export default async function ComponentDocPage({
@@ -34,7 +35,6 @@ export default async function ComponentDocPage({
   const { previous, next } = getComponentDocNeighbors(item.name);
   const isNew = isDocsComponentNew(item.name);
   const sourceFiles = await getRegistrySource(item.name);
-  const registryItemUrl = getRegistryItemUrl(item.name);
   const title = item.name
     .split('-')
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -42,7 +42,7 @@ export default async function ComponentDocPage({
 
   const rawCode = sourceFiles[0]?.content || 'No source code available.';
   const highlightedCode = await highlightCode(rawCode);
-  const cliCmd = commandFor('pnpm', registryItemUrl);
+  const cliCmd = commandFor('pnpm', item.name);
   const highlightedCli = await highlightCode(cliCmd, 'bash');
   const manualCmd = `// Copy and paste the following code into your project.\n\n${rawCode}`;
   const highlightedManual = await highlightCode(manualCmd, 'tsx');

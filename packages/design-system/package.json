@@ -2,7 +2,29 @@
   "name": "@seaguntech/design-system",
   "private": false,
   "version": "0.1.0",
+  "author": "Seaguntech",
   "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seaguntech/ui.git",
+    "directory": "packages/design-system"
+  },
+  "homepage": "https://github.com/seaguntech/ui/tree/main/packages/design-system",
+  "bugs": {
+    "url": "https://github.com/seaguntech/ui/issues"
+  },
+  "keywords": [
+    "seaguntech",
+    "design-system",
+    "tailwindcss",
+    "tokens",
+    "css-variables",
+    "theme"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -36,13 +58,15 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "catalog:web-ui",
+    "postcss": "catalog:web-ui",
+    "tailwindcss": "catalog:web-ui"
+  },
+  "devDependencies": {
     "@seaguntech/eslint-config": "workspace:*",
     "@seaguntech/prettier-config": "workspace:*",
     "@types/node": "catalog:",
     "eslint": "catalog:",
-    "postcss": "catalog:web-ui",
     "prettier": "catalog:",
-    "tailwindcss": "catalog:web-ui",
     "typescript": "catalog:"
   },
   "prettier": "@seaguntech/prettier-config/base"

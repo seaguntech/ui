@@ -1,6 +1,30 @@
 {
   "name": "@seaguntech/ui",
   "version": "0.1.0",
+  "description": "Shared React UI component library for Seaguntech.",
+  "author": "Seaguntech",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seaguntech/ui.git",
+    "directory": "packages/ui"
+  },
+  "homepage": "https://github.com/seaguntech/ui/tree/main/packages/ui",
+  "bugs": {
+    "url": "https://github.com/seaguntech/ui/issues"
+  },
+  "keywords": [
+    "seaguntech",
+    "react",
+    "ui",
+    "component-library",
+    "tailwindcss",
+    "radix-ui",
+    "typescript"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
   "private": false,
   "type": "module",
   "main": "./dist/index.js",
