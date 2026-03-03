@@ -62,4 +62,46 @@ describe('writeRegistryFiles', () => {
       }),
     ).rejects.toThrow('File already exists');
   });
+
+  it('writes into src when project alias points to src', async () => {
+    const cwd = await mkdtemp(path.join(tmpdir(), 'seagun-cli-'));
+    tempDirs.push(cwd);
+
+    await mkdir(path.join(cwd, 'src'), { recursive: true });
+    await writeFile(
+      path.join(cwd, 'tsconfig.json'),
+      JSON.stringify(
+        {
+          compilerOptions: {
+            paths: {
+              '@/*': ['./src/*'],
+            },
+          },
+        },
+        null,
+        2,
+      ),
+      'utf-8',
+    );
+
+    const result = await writeRegistryFiles({
+      cwd,
+      files: [
+        {
+          path: 'ui/badge.tsx',
+          target: 'components/ui/badge.tsx',
+          type: 'registry:ui',
+          content: 'export const Badge = () => null;\n',
+        },
+      ],
+      policy: 'fail',
+    });
+
+    expect(result.written).toEqual(['src/components/ui/badge.tsx']);
+    const exists = await readFile(
+      path.join(cwd, 'src/components/ui/badge.tsx'),
+      'utf-8',
+    );
+    expect(exists).toContain('Badge');
+  });
 });

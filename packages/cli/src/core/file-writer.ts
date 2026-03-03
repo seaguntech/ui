@@ -1,4 +1,5 @@
 import type { RegistryBuiltFile } from '../types.js';
+import { detectProjectLayout, resolveWriteTarget } from './project-layout.js';
 import fsExtra from 'fs-extra';
 import path from 'node:path';
 
@@ -19,6 +20,7 @@ type WriteResult = {
 export async function writeRegistryFiles(
   options: WriteOptions,
 ): Promise<WriteResult> {
+  const projectLayout = await detectProjectLayout(options.cwd);
   const written: string[] = [];
   const skipped: string[] = [];
   const createdFiles: string[] = [];
@@ -26,7 +28,10 @@ export async function writeRegistryFiles(
 
   try {
     for (const file of options.files) {
-      const relativeTarget = sanitizeRelativePath(file.target ?? file.path);
+      const relativeTarget = resolveWriteTarget({
+        targetOrPath: file.target ?? file.path,
+        sourceRootPrefix: projectLayout.sourceRootPrefix,
+      });
       const targetPath = path.join(options.cwd, relativeTarget);
       const exists = await fsExtra.pathExists(targetPath);
 
@@ -65,16 +70,6 @@ export async function writeRegistryFiles(
   }
 
   return { written, skipped };
-}
-
-function sanitizeRelativePath(relativePath: string) {
-  const normalized = path.normalize(relativePath).replace(/^([/\\])+/, '');
-
-  if (path.isAbsolute(normalized) || normalized.startsWith('..')) {
-    throw new Error(`Unsafe target path: ${relativePath}`);
-  }
-
-  return normalized;
 }
 
 async function rollbackWrites(

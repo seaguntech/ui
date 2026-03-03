@@ -12,9 +12,11 @@
     "@radix-ui/react-slot",
     "@radix-ui/react-tabs",
     "class-variance-authority",
+    "clsx",
     "cmdk",
     "framer-motion",
-    "lucide-react"
+    "lucide-react",
+    "tailwind-merge"
   ],
   "registryDependencies": [
     "badge",

@@ -5,6 +5,7 @@ export const registryItems: RegistryItem[] = [
     name: 'utils',
     type: 'registry:lib',
     description: 'Class name utility helpers',
+    dependencies: ['clsx', 'tailwind-merge'],
     files: [
       {
         path: 'lib/utils.ts',

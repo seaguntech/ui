@@ -2,6 +2,7 @@ import { resolveRegistryUrl } from '../core/config.js';
 import {
   detectPackageManager,
   getMissingDependencies,
+  inferExternalDependenciesFromFiles,
   installDependencies,
   readProjectPackageJson,
 } from '../core/dependency-installer.js';
@@ -41,8 +42,10 @@ export async function runComponentsAdd(names: string[], options: AddOptions) {
   });
 
   const files = items.flatMap((item) => item.files);
+  const metadataDependencies = items.flatMap((item) => item.dependencies ?? []);
+  const inferredDependencies = inferExternalDependenciesFromFiles(files);
   const packageDependencies = Array.from(
-    new Set(items.flatMap((item) => item.dependencies ?? [])),
+    new Set([...metadataDependencies, ...inferredDependencies]),
   ).sort();
 
   const writePolicy: ConflictPolicy = options.yes ? 'overwrite' : 'fail';

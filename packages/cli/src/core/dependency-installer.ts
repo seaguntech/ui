@@ -1,4 +1,4 @@
-import type { PackageManager } from '../types.js';
+import type { PackageManager, RegistryBuiltFile } from '../types.js';
 import { execa } from 'execa';
 import fsExtra from 'fs-extra';
 import path from 'node:path';
@@ -50,6 +50,32 @@ export function getMissingDependencies(
   return dependencies.filter((dependency) => !declared[dependency]);
 }
 
+export function inferExternalDependenciesFromFiles(files: RegistryBuiltFile[]) {
+  const detected = new Set<string>();
+
+  for (const file of files) {
+    const modules = extractModuleSpecifiers(file.content);
+    for (const specifier of modules) {
+      const packageName = normalizePackageName(specifier);
+      if (!packageName) {
+        continue;
+      }
+
+      if (
+        packageName === 'react' ||
+        packageName === 'react-dom' ||
+        packageName === 'next'
+      ) {
+        continue;
+      }
+
+      detected.add(packageName);
+    }
+  }
+
+  return Array.from(detected);
+}
+
 export async function installDependencies(options: {
   cwd: string;
   packageManager: PackageManager;
@@ -79,4 +105,52 @@ export async function installDependencies(options: {
 
 function isObject(value: unknown): value is Record<string, string> {
   return typeof value === 'object' && value !== null;
+}
+
+function extractModuleSpecifiers(sourceCode: string) {
+  const values = new Set<string>();
+  const importFromRegex = /from\s+['"]([^'"]+)['"]/g;
+  const directImportRegex = /import\s+['"]([^'"]+)['"]/g;
+  const dynamicImportRegex = /import\(\s*['"]([^'"]+)['"]\s*\)/g;
+
+  for (const regex of [
+    importFromRegex,
+    directImportRegex,
+    dynamicImportRegex,
+  ]) {
+    let match = regex.exec(sourceCode);
+    while (match) {
+      const value = match[1];
+      if (value) {
+        values.add(value);
+      }
+      match = regex.exec(sourceCode);
+    }
+  }
+
+  return Array.from(values);
+}
+
+function normalizePackageName(specifier: string) {
+  if (
+    specifier.startsWith('.') ||
+    specifier.startsWith('/') ||
+    specifier.startsWith('@/') ||
+    specifier.startsWith('~/') ||
+    specifier.startsWith('node:') ||
+    specifier.startsWith('#')
+  ) {
+    return null;
+  }
+
+  if (specifier.startsWith('@')) {
+    const [scope, name] = specifier.split('/');
+    if (!scope || !name) {
+      return null;
+    }
+    return `${scope}/${name}`;
+  }
+
+  const [name] = specifier.split('/');
+  return name ?? null;
 }

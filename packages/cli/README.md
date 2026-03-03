@@ -39,6 +39,10 @@ pnpm --package=@seaguntech/cli@latest dlx seagun doctor
 - `--skip-install`: skip package installation step.
 - `--dry-run`: preview planned writes and installs.
 
+By default, generated files follow registry targets. If your project uses
+`"@/*": ["./src/*"]`, the CLI will automatically write to `src/components/*`
+and `src/lib/*` to match your alias.
+
 ## Configuration
 
 Initialize local config in a target project:
