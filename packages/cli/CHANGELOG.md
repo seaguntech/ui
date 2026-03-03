@@ -1,5 +1,12 @@
 # @seaguntech/cli
 
+## 0.1.3
+
+### Patch Changes
+
+- 22d3dbb: Make `components add` idempotent by skipping existing files when the generated
+  content is unchanged, instead of failing on repeated installs.
+
 ## 0.1.2
 
 ### Patch Changes
