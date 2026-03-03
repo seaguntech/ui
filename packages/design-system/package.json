@@ -1,7 +1,7 @@
 {
   "name": "@seaguntech/design-system",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Seaguntech",
   "type": "module",
   "license": "MIT",
