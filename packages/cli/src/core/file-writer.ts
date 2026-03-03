@@ -1,5 +1,5 @@
 import type { RegistryBuiltFile } from '../types.js';
-import { ensureDir, pathExists, readFile, remove, writeFile } from 'fs-extra';
+import fsExtra from 'fs-extra';
 import path from 'node:path';
 
 export type ConflictPolicy = 'fail' | 'overwrite' | 'skip';
@@ -28,7 +28,7 @@ export async function writeRegistryFiles(
     for (const file of options.files) {
       const relativeTarget = sanitizeRelativePath(file.target ?? file.path);
       const targetPath = path.join(options.cwd, relativeTarget);
-      const exists = await pathExists(targetPath);
+      const exists = await fsExtra.pathExists(targetPath);
 
       if (exists && options.policy === 'skip') {
         skipped.push(relativeTarget);
@@ -44,16 +44,16 @@ export async function writeRegistryFiles(
         continue;
       }
 
-      await ensureDir(path.dirname(targetPath));
+      await fsExtra.ensureDir(path.dirname(targetPath));
 
       if (exists) {
-        const currentContent = await readFile(targetPath, 'utf-8');
+        const currentContent = await fsExtra.readFile(targetPath, 'utf-8');
         overwrittenFiles.set(targetPath, currentContent);
       } else {
         createdFiles.push(targetPath);
       }
 
-      await writeFile(targetPath, file.content, 'utf-8');
+      await fsExtra.writeFile(targetPath, file.content, 'utf-8');
       written.push(relativeTarget);
     }
   } catch (error) {
@@ -81,9 +81,9 @@ async function rollbackWrites(
   createdFiles: string[],
   overwrittenFiles: Map<string, string>,
 ) {
-  await Promise.all(createdFiles.map((file) => remove(file)));
+  await Promise.all(createdFiles.map((file) => fsExtra.remove(file)));
 
   for (const [filePath, originalContent] of overwrittenFiles.entries()) {
-    await writeFile(filePath, originalContent, 'utf-8');
+    await fsExtra.writeFile(filePath, originalContent, 'utf-8');
   }
 }

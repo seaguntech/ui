@@ -1,7 +1,7 @@
 import type { SeagunConfig } from '../types.js';
 import { CONFIG_FILE_PATH, DEFAULT_REGISTRY_URL } from './constants.js';
 import { seagunConfigSchema } from './schemas.js';
-import { pathExists, readJson, writeJson } from 'fs-extra';
+import fsExtra from 'fs-extra';
 import path from 'node:path';
 
 export async function readSeagunConfig(
@@ -9,17 +9,17 @@ export async function readSeagunConfig(
 ): Promise<SeagunConfig | null> {
   const configPath = path.join(cwd, CONFIG_FILE_PATH);
 
-  if (!(await pathExists(configPath))) {
+  if (!(await fsExtra.pathExists(configPath))) {
     return null;
   }
 
-  const raw = await readJson(configPath);
+  const raw = await fsExtra.readJson(configPath);
   return seagunConfigSchema.parse(raw);
 }
 
 export async function writeSeagunConfig(cwd: string, config: SeagunConfig) {
   const configPath = path.join(cwd, CONFIG_FILE_PATH);
-  await writeJson(configPath, config, { spaces: 2 });
+  await fsExtra.writeJson(configPath, config, { spaces: 2 });
   return configPath;
 }
 
