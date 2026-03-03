@@ -1,0 +1,74 @@
+{
+  "name": "@seaguntech/cli",
+  "version": "0.1.0",
+  "author": "Seaguntech",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seaguntech/ui.git",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://github.com/seaguntech/ui/tree/main/packages/cli",
+  "bugs": {
+    "url": "https://github.com/seaguntech/ui/issues"
+  },
+  "keywords": [
+    "seaguntech",
+    "cli",
+    "component-library",
+    "registry",
+    "shadcn",
+    "tailwindcss",
+    "react"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "private": false,
+  "type": "module",
+  "description": "Native CLI for installing Seaguntech UI registry components",
+  "bin": {
+    "seagun": "./dist/index.js",
+    "seaguntech": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --max-warnings 0 --fix",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "check-types": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "clean": "rm -rf dist coverage"
+  },
+  "dependencies": {
+    "commander": "^14.0.1",
+    "execa": "^9.6.0",
+    "fs-extra": "^11.3.2",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@seaguntech/eslint-config": "workspace:*",
+    "@seaguntech/prettier-config": "workspace:*",
+    "@seaguntech/typescript-config": "workspace:*",
+    "@seaguntech/vitest-config": "workspace:*",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "tsup": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:testing"
+  },
+  "prettier": "@seaguntech/prettier-config/base"
+}

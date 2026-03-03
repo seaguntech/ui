@@ -6,6 +6,7 @@ Mini-monorepo for a shadcn-compatible custom registry and UI package.
 
 - `packages/design-system`
 - `packages/ui`
+- `packages/cli`
 - `apps/www`
 
 ## Commands
@@ -17,9 +18,22 @@ pnpm validate:registry
 pnpm verify
 pnpm verify:visual
 pnpm dev
+pnpm --filter @seaguntech/cli build
 ```
 
 Registry output is generated into `apps/www/public/r`.
+
+## Public Packages
+
+- `@seaguntech/design-system`
+- `@seaguntech/ui`
+- `@seaguntech/cli`
+
+CLI quick usage:
+
+```bash
+pnpm dlx @seaguntech/cli@latest components add button
+```
 
 ## Documentation
 

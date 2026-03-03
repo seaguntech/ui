@@ -7,9 +7,15 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@seaguntech/www"],
+  "ignore": [
+    "@seaguntech/www",
+    "@seaguntech/eslint-config",
+    "@seaguntech/prettier-config",
+    "@seaguntech/typescript-config",
+    "@seaguntech/vitest-config"
+  ],
   "privatePackages": {
     "version": true,
-    "tag": true
+    "tag": false
   }
 }
