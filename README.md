@@ -32,7 +32,7 @@ Registry output is generated into `apps/www/public/r`.
 CLI quick usage:
 
 ```bash
-pnpm --package=@seaguntech/cli@latest dlx seagun components add button
+pnpm dlx @seaguntech/cli@latest components add button
 ```
 
 ## Documentation

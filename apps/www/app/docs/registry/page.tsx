@@ -32,12 +32,10 @@ export default function RegistryGuidePage() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm">
           <code className="block rounded-md bg-muted p-3">
-            pnpm --package=@seaguntech/cli@latest dlx seagun components add
-            button
+            pnpm dlx @seaguntech/cli@latest components add button
           </code>
           <code className="block rounded-md bg-muted p-3">
-            pnpm --package=@seaguntech/cli@latest dlx seagun components add
-            voice-input-bar
+            pnpm dlx @seaguntech/cli@latest components add voice-input-bar
           </code>
         </CardContent>
       </Card>

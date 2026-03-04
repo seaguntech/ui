@@ -7,20 +7,20 @@ Native CLI for installing Seaguntech UI registry components.
 Install a component:
 
 ```bash
-pnpm --package=@seaguntech/cli@latest dlx seagun components add button
+pnpm dlx @seaguntech/cli@latest components add button
 ```
 
 List and search available items:
 
 ```bash
-pnpm --package=@seaguntech/cli@latest dlx seagun components list
-pnpm --package=@seaguntech/cli@latest dlx seagun components search voice
+pnpm dlx @seaguntech/cli@latest components list
+pnpm dlx @seaguntech/cli@latest components search voice
 ```
 
 Validate local setup:
 
 ```bash
-pnpm --package=@seaguntech/cli@latest dlx seagun doctor
+pnpm dlx @seaguntech/cli@latest doctor
 ```
 
 ## Commands
@@ -48,7 +48,7 @@ and `src/lib/*` to match your alias.
 Initialize local config in a target project:
 
 ```bash
-pnpm --package=@seaguntech/cli@latest dlx seagun init
+pnpm dlx @seaguntech/cli@latest init
 ```
 
 This writes `.seagun/config.json` with:

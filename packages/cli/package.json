@@ -28,8 +28,7 @@
   "type": "module",
   "description": "Native CLI for installing Seaguntech UI registry components",
   "bin": {
-    "seagun": "./dist/index.js",
-    "seaguntech": "./dist/index.js"
+    "seagun": "./dist/index.js"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
