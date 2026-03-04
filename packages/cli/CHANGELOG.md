@@ -1,5 +1,12 @@
 # @seaguntech/cli
 
+## 0.1.4
+
+### Patch Changes
+
+- 10bc8f9: Use a single CLI binary to support direct `pnpm dlx @seaguntech/cli@latest ...`
+  usage and align docs commands across pnpm/npm/yarn/bun.
+
 ## 0.1.3
 
 ### Patch Changes
