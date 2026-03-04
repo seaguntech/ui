@@ -31,7 +31,6 @@
 - Ensure `@seaguntech/design-system` metadata is ready for public publish
 - Ensure `@seaguntech/cli` metadata and README are ready for npm
 - Ensure component changes are mirrored in registry templates
-- Update `docs/master-spec.md` status section if phase scope changed
 - Ensure at least one `.changeset/*.md` file exists for release changes
 
 ## Metadata quality checks

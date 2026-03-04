@@ -1,46 +1,80 @@
-# Seaguntech UI Workspace
+# Seaguntech UI
 
-Mini-monorepo for a shadcn-compatible custom registry and UI package.
+Open-source UI ecosystem for Seaguntech with three public packages:
 
-## Workspaces
+- `@seaguntech/design-system`: Tailwind v4 tokens, themes, and base styles.
+- `@seaguntech/ui`: reusable React UI components.
+- `@seaguntech/cli`: CLI to pull components from the Seaguntech registry.
 
-- `packages/design-system`
-- `packages/ui`
-- `packages/cli`
-- `apps/www`
+## Quick Start (Consumers)
 
-## Commands
+Install UI components:
 
 ```bash
-pnpm install
-pnpm build:registry
-pnpm validate:registry
-pnpm verify
-pnpm verify:visual
-pnpm dev
-pnpm --filter @seaguntech/cli build
+pnpm add @seaguntech/ui
 ```
 
-Registry output is generated into `apps/www/public/r`.
+Use components and shared styles:
 
-## Public Packages
+```tsx
+import { Button } from '@seaguntech/ui';
+```
 
-- `@seaguntech/design-system`
-- `@seaguntech/ui`
-- `@seaguntech/cli`
+```css
+@import '@seaguntech/ui/styles.css';
+```
 
-CLI quick usage:
+Or add components via CLI:
 
 ```bash
 pnpm dlx @seaguntech/cli@latest components add button
 ```
 
-## Documentation
+## Repository Structure
 
-- Master plan: `docs/master-spec.md`
+- `apps/www`: docs site and hosted registry JSON (`/r/*.json`).
+- `packages/design-system`: CSS tokens and theme layers.
+- `packages/ui`: React component package.
+- `packages/cli`: component installation CLI.
+- `docs`: contributor and operational documentation.
+
+## Local Development
+
+Requirements:
+
+- Node.js `>=20`
+- pnpm `10.25.0`
+
+Common commands:
+
+```bash
+pnpm install
+pnpm dev:www
+pnpm build:registry
+pnpm validate:registry
+pnpm verify
+```
+
+Registry build output is generated at `apps/www/public/r`.
+
+## Documentation Index
+
+- Contribution guide: `CONTRIBUTING.md`
+- Security policy: `SECURITY.md`
 - Troubleshooting: `docs/troubleshooting.md`
 - Adding components: `docs/adding-components.md`
 - Release checklist: `docs/release-checklist.md`
+
+Package docs:
+
+- `packages/design-system/README.md`
+- `packages/ui/README.md`
+- `packages/cli/README.md`
+
+## Community
+
+- Report bugs or request features: `https://github.com/seaguntech/ui/issues`
+- Read code of conduct: `CODE_OF_CONDUCT.md`
 
 ## Automation
 
