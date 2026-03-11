@@ -34,6 +34,7 @@ playwright/.cache/
 # Build Outputs
 .next/
 apps/www/next-env.d.ts
+apps/www/public/r/
 out/
 build/
 dist/
