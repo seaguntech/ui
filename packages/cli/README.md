@@ -55,7 +55,7 @@ This writes `.seagun/config.json` with:
 
 ```json
 {
-  "registry": "https://registry-seaguntech.vercel.app"
+  "registry": "https://ui.seaguntech.com"
 }
 ```
 
@@ -64,7 +64,7 @@ Registry URL resolution priority:
 1. `--registry`
 2. `.seagun/config.json`
 3. `REGISTRY_URL`
-4. `https://registry-seaguntech.vercel.app`
+4. `https://ui.seaguntech.com`
 
 ## Requirements
 

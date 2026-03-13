@@ -1,4 +1,4 @@
-const FALLBACK_REGISTRY_URL = 'http://localhost:4200';
+const FALLBACK_REGISTRY_URL = 'https://registry-seaguntech.vercel.app';
 
 function trimTrailingSlashes(value: string) {
   return value.replace(/\/+$/, '');
